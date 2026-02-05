@@ -1,0 +1,48 @@
+---
+layout: page
+title: News and Media
+---
+
+<h1>{{ page.title }}</h1>
+<p>
+These listings include every media item across all positions. 
+</p>
+
+
+{% assign target-tags = site.data.internal.position-tags
+  | where_exp:"pos", "pos.NumberToElect == '0'" %}
+
+{% for virtual-tag in target-tags %}
+
+  {% assign pos-media = site.data.sync.media
+    | where_exp:"ev", "ev.PositionIDList contains
+    virtual-tag.PositionUniqueName" %}
+
+  {% if pos-media.size > 0 %}
+    <div class="content-box">
+     {% include list-media-items.html
+      item-list=pos-media
+      race-id=virtual-tag.PositionUniqueName
+      type="news"
+      header=virtual-tag.PositionDesc
+      teaser-limit=site.teaser_limit_surveys
+      big-header=true %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% assign media-list = site.data.sync.media %}
+
+{% if media-list.size > 0 %}
+  <div class="content-box">
+  <h2>All Media Items</h2>
+
+    {% include list-media-split.html
+      media-list=media-list
+      race-id="news"
+      teaser-limit=-1
+      %}
+  </div>
+{% endif %}
+
+

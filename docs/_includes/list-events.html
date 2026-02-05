@@ -1,0 +1,45 @@
+  {% assign events-list = site.data.sync.events 
+    | where_exp:"ev", "ev.PositionIDList contains include.race-id" %}
+
+  {% assign alias-list = include.alias-string | split: "," %}
+  {% for alias in alias-list %}
+    {% assign aliased-events = site.data.sync.events
+      | where_exp:"item", "item.PositionIDList contains alias"
+      %}
+     {% assign events-list = events-list | concat: aliased-events %}
+  {% endfor %}
+
+  {% assign events-list = events-list | uniq %}
+    
+  {% comment %}
+    I think this should not miss any events. site.time
+    is in UTC, which messes things up. But I am only 
+    including the date in date-now, and DateTimeStart includes
+    the time as well, so should always be "bigger" if the 
+    date component is the same. 
+  {% endcomment %}
+  {% assign date-now = site.time | date: "%F" %}
+  {% assign events-upcoming = (events-list 
+    | where_exp:"ev", "ev.DateTimeStart >= date-now") %}
+  {% assign events-multicandidate = events-upcoming
+    | where_exp:"ev", "ev.ForMultipleCandidates == 'Y'" %}
+  {% assign events-other = events-upcoming
+    | where_exp:"ev", "ev.ForMultipleCandidates != 'Y'" %}
+
+
+  {% if events-multicandidate.size > 0 %}
+    {% include list-event-block.html
+      event-list=events-multicandidate
+      header="Upcoming All-Candidates Events"
+      teaser-limit=site.teaser_limit_events_multi_candidate 
+      race-id=include.race-id %}
+  {% endif %}
+
+  {% if events-other.size > 0 %}
+    {% include list-event-block.html
+      event-list=events-other
+      header="Meet-and-Greets and Other Events"
+      teaser-limit=site.teaser_limit_events_specific
+      race-id=include.race-id %}
+  {% endif %}
+

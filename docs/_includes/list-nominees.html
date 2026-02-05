@@ -1,0 +1,88 @@
+
+  {% assign race-info = site.data.internal.position-tags |
+  where:"PositionUniqueName",include.race-id | first -%}
+
+<div class="content-box" >
+  {% unless include.hide-position-desc %}
+    <h3 class="medium-text">{{ race-info.PositionDesc }}</h3>
+  {% endunless %}
+
+
+  {% capture introtext %}
+  {% include desc-positions-gross.html
+    category=race-info.PositionCategory
+  %} 
+  {% endcapture %}
+  {{ introtext | markdownify }}
+
+  <div class="candidate-list" id="{{ include.race-id | slugify }}" >
+
+    {% assign these-nominees = site.data.sync.nominees
+      | where:"PositionUniqueName",include.race-id %}
+    {% assign sorted-nominees = these-nominees | sort_natural: "Last_Name" %}
+
+    {% assign valid-nominees = these-nominees
+      | where_exp:"nom", "nom.Withdrawn != 'Y'" %}
+    {% assign num-to-elect = race-info.NumberToElect | plus: 0 %}
+
+
+    {% unless page.hide-details  %}
+      {% if site.election_over %}
+        {% if race-info.ShowResults == 'Y' %}
+          {% include list-results.html nominees=these-nominees 
+             valid-nominees=valid-nominees
+             num-to-elect=num-to-elect
+             race-id=include.race-id %}
+          <h4 class="inline">Candidates</h4>  
+        {% else %}
+          <p>
+          (No results published yet.)
+          </p>
+        {% endif %}
+      {% endif %}
+    {% endunless %}
+
+    {%- if num-to-elect == 1 and valid-nominees.size == 1 -%}
+      <p><strong>(This position is acclaimed.)</strong></p>
+    {% elsif num-to-elect == 0 %}
+    {% elsif num-to-elect == valid-nominees.size %}
+      <p><strong>(These {{ num-to-elect }} positions are
+      acclaimed.)</strong></p>
+    {%- elsif num-to-elect > 1 %}
+      <p><strong>(Elect {{ num-to-elect }}; vote for
+      up to {{ num-to-elect }})</strong></p>
+    {%- endif -%}
+
+    {% if sorted-nominees.size > 0 or num-to-elect == 0 %}
+      <div class="candidate-list-grid">
+          {% for n in sorted-nominees %}
+            {% include candidate-card.html
+              winner=n
+              position_id=include.race-id
+            %}
+          {% endfor %}
+      </div>
+
+    {% else %}
+      <p>
+      Whoops! Nobody appears to be running for this position!
+      Has democracy failed or are our records out of date?
+      </p>
+    {% endif %}
+
+    {% unless page.hide-details %}
+      {% include list-events.html race-id=include.race-id
+        alias-string=race-info.Aliases %}
+
+      {% include list-media.html race-id=include.race-id
+        alias-string=race-info.Aliases %}
+
+    {% endunless %}
+
+  </div>
+  {% if include.show-toc-link %}
+    <p class="toc-link">
+    <a href="#toc">&#x2B06; Go back to position list.</a>
+    </p>
+  {% endif %}
+</div>

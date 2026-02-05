@@ -1,0 +1,20 @@
+---
+layout: page
+title: Candidates and Positions
+hide-details: yes
+---
+<h1>{{ page.title }}</h1>
+
+<p>
+Below are all the positions up for election in Waterloo Region, and
+the people who are running for them. For additional information
+(including news stories, upcoming events, and all-candidate meeting
+recordings) please visit the <a href="./wards">specific page for your
+ward</a>.
+</p>
+
+{% for position in site.data.internal.position-tags %}
+  {% if position.NumberToElect > "0" %}
+    {% include list-nominees.html race-id=position.PositionUniqueName %}
+  {% endif %}
+{% endfor %}
