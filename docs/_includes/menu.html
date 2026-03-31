@@ -4,6 +4,15 @@ From: https://christianspecht.de/2014/06/18/building-a-pseudo-dynamic-tree-menu-
 {% assign navurl = page.url | remove: '.html' %}
 <div id="main-menu">
   <div class="inner">
+    <a href="{{ site.baseurl }}/">
+      <img src="{{ site.baseurl }}/assets/images/wrvotes-logo.svg" alt="Waterloo Region Votes logo" />
+    </a>
+    {% if site.show_downloads %}
+      <section id="downloads">
+        <a class="zip_download_link" href="{{ site.github.zip_url }}">Download this project as a .zip file</a>
+        <a class="tar_download_link" href="{{ site.github.tar_url }}">Download this project as a tar.gz file</a>
+      </section>
+    {% endif %}
     <ul id="main-menu-ul" class="hidden">
       {%- for item in site.data.internal.menu-layout %}
         <li><a href="{{ site.baseurl }}{{ item.url }}"
