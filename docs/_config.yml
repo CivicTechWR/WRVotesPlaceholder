@@ -1,6 +1,6 @@
 theme: jekyll-theme-slate
 title: Waterloo Region Votes
-description: Information About the 2022 Municipal Election
+description: Anticipating the 2026 Municipal Election
 show_downloads: false
 plugins:
   - jekyll-sitemap
@@ -43,3 +43,4 @@ election_date: "2022-10-24T09:00"
 # This should be a number strictly greater than the number of votes
 # received by any candidate in any race. 
 big_number: 10000000
+
