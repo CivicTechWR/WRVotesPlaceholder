@@ -5,30 +5,34 @@ layout: default
 
 <section class="flex justify-center">
   <article class="standout-box blue large">
-    <div class="big-text header" id="map-box" >
-    Election Day is October 26, 2026.
-    </div>
+    <h1 id="map-box" >
+    Municipal Election Day is Oct 26, 2026.
+    </h1>
   </article>
 </section>
 
 We are still deciding whether to run this site for the 2026 municipal
-election. Stay tuned!
+election. Stay tuned! 
 
 In the meantime we have gathered some information you might find
 useful if you are a potential voter or potential candidate. 
 
-For Voters
+Get Informed for the Upcoming Election
 ------
 
-Learn how to [register to vote](resources/amend-voters-list), and
-information [about the 2026 election](resources/voter-info). 
+Check out these resources about the upcoming election: 
 
-You can see official candidate lists on <https://wrvotes.com> . 
+- Learn how to [register to vote](resources/amend-voters-list).
+- Learn more [about the 2026 election](resources/voter-info).
+- See official candidate lists on <https://wrvotes.com>.
 
-For Candidates
+
+Planning to Run as a Candidate?
 ----------
 
-Want to run? The deadline to register is **August 21, 2026**. 
+Are you thinking of running for office? Great!
+
+The deadline to register a candidate nomination is **August 21, 2026**. 
 
 The Region of Waterloo has published an [overview of the nomination
 process](https://www.regionofwaterloo.ca/government-and-council/elections/#Summaryofthenominationprocess).
@@ -56,6 +60,6 @@ We have no upcoming events to list yet. Contact us if you have some!
 {% endif %}
 
 Is there a local election-related event that we have not listed? 
-Please email us about it!
+Please email us about it at <civictechwr.wrvotes@gmail.com>!
 
 
