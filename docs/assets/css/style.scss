@@ -4,8 +4,6 @@
 @import "{{ site.theme }}";
 @import "variables";
 @import "typography";
-@import "theme_overrides";
-
 
 /* ---------- MAIN MENU STYLING --------- */
 #main-menu {
@@ -17,7 +15,7 @@
     padding: 0 2%;
   }
 
-  .inner::after { 
+  .inner::after {
     /* Clearfix hack so menu button shows */
     content: "";
     clear: both;
@@ -43,48 +41,45 @@
     padding-right: 3em;
     margin: 0;
   }
-
 }
 
-button.toggle-menu { 
+button.toggle-menu {
   background: inherit;
   font-size: 1.5em;
   font-family: $primary-font;
   color: $light;
   min-width: 1em;
   border: 0;
-} 
-
+}
 
 @media screen and (min-width: $menu-breakpoint) {
-  button.toggle-menu { 
+  button.toggle-menu {
     display: none;
   }
 
-  #main-menu-ul { 
+  #main-menu-ul {
     display: block;
   }
 }
 
 @media screen and (max-width: $menu-breakpoint) {
-  button.toggle-menu { 
+  button.toggle-menu {
     display: block;
     float: right;
   }
 
-  #main-menu-ul.hidden { 
+  #main-menu-ul.hidden {
     display: none;
-  } 
+  }
 
-  #main-menu-ul { 
+  #main-menu-ul {
     display: block;
-
   }
 }
 
 /* ----------- TOC BUTTONS --------------- */
 
-button.toggle-toc { 
+button.toggle-toc {
   background: inherit;
   float: right;
   font-size: 2em;
@@ -94,40 +89,140 @@ button.toggle-toc {
   border-color: $light;
   min-width: 1em;
   margin-top: 10px; /* align with H2 */
-
-} 
+}
 
 @media screen and (min-width: $sidebar-breakpoint) {
-  button.toggle-toc { 
+  button.toggle-toc {
     display: none;
   }
 
-  #toc-list { 
+  #toc-list {
     display: block;
   }
 }
 
 @media screen and (max-width: $sidebar-breakpoint) {
-  button.toggle-toc { 
+  button.toggle-toc {
     display: inline;
   }
 
-  #toc-list.hidden { 
+  #toc-list.hidden {
     display: none;
-  } 
+  }
 
-  #toc-list { 
+  #toc-list {
     display: block;
-
   }
 }
 
+/* ----------- TOC TABS ------------- */
+
+#toc-tabs-container {
+  background: $white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-panel {
+  display: none;
+  padding: 10px;
+}
+
+.tab-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.textonly {
+  display: none;
+}
+
+nav#toc-tabs {
+  margin-top: 2.5em;
+
+  .tab-strip {
+    display: flex;
+    gap: 2px;
+    min-height: 2em;
+    height: auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      a:hover {
+        color: inherit;
+      }
+    }
+
+    &.substrip {
+      display: none;
+    }
+
+    label {
+    }
+  }
+
+  .substrip {
+    margin-bottom: 2em;
+    margin-top: 0.7em;
+    height: auto;
+
+    .tab-label {
+      font-size: 0.8em;
+    }
+  }
+
+  .tab-label {
+    display: flex; // Used to center text vertically
+    align-items: center;
+    min-height: 100%;
+    gap: 8px;
+    padding: 0 1em;
+    font-size: 0.875em;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    background: $light;
+    color: black;
+    border: 0.2em solid var(--blue);
+    border-radius: 0.7em;
+    text-align: center;
+
+    &:focus-visible {
+      outline: 0.2em solid $blue;
+      outline-offset: 0.2em;
+    }
+
+    /* 
+    border-color: $dark !important;
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    */
+    /* 
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    */
+    /* margin-bottom: 0.5em; */
+  }
+
+  .tab-panels {
+    background: whitesmoke;
+    border: 2px solid var(--rule);
+    border-top: none;
+  }
+}
 
 /* ----------- COLLAPSABLE LISTS --------- */
 
-
 /* Make this button look like a regular link */
-button.toggle-button {
+button.toggle-button,
+button.toggle-button-background {
   color: $blue;
   font-size: smaller;
   border-color: $blue;
@@ -139,17 +234,26 @@ button.toggle-button {
 
   &:hover {
     color: $pink;
-    
   }
 }
 
+.togglable {
+  display: block;
 
-h2.inline, h3.inline, h4.inline {
+  &.hidden {
+    display: none;
+  }
+}
+
+h2.inline,
+h3.inline,
+h4.inline {
   display: inline;
 }
 
 /* h4 and h3 do not look sufficiently different. */
-h4.race-wrapper, h4.inline {
+h4.race-wrapper,
+h4.inline {
   font-size: 1.2em;
 }
 
@@ -166,11 +270,156 @@ ul.continue {
   margin-top: -15px;
 }
 
+.media-list {
+  margin-bottom: 1em;
+}
+
+.toggletop:hover {
+  cursor: pointer;
+  border-bottom: 3px solid;
+}
+
+.toggle-content {
+  display: none;
+  max-height: 0;
+  transition: all 0.2s ease 0.15s;
+
+  &.active {
+    max-height: 100%;
+    display: block;
+
+    transition: all 0.35s ease 0.15s;
+    margin-bottom: 3em;
+  }
+}
+
+/* ------------ CANDIDATE LISTS ---------- */
+
+.readable-widths p,
+.readable-widths ul,
+p.readable-widths {
+  max-width: 45em; /* about 100 chars, which seems typical */
+}
+
+.space-top {
+  margin-top: 1em;
+}
+
+/* ------------ CANDIDATE WORKSHEETS ------- */
+
+table.candidate-worksheet {
+  table-layout: fixed;
+  width: 90%;
+
+  s {
+    text-decoration-thickness: 0.15em;
+  }
+
+  /* The "of .cell" is so that these rules do not apply 
+     to the lower divs
+   */
+
+  /* heart */
+  tr :nth-child(1 of .cell) {
+    width: 1.5em;
+    text-align: center;
+  }
+
+  .favourite-btn {
+    display: block;
+    margin: auto;
+  }
+
+  .notes-btn {
+    display: block;
+    margin: auto;
+  }
+
+  /* candidate name */
+  tr :nth-child(2 of .cell) {
+    width: 25%;
+
+    td {
+      /* Ensure there is enough space for the name.*/
+      white-space: nowrap;
+    }
+  }
+
+  /* my notes */
+  tr :nth-child(3 of .cell) {
+    .auto-resize-textarea {
+      width: 100%;
+    }
+
+    td {
+      padding: 0;
+    }
+  }
+
+  th,
+  td {
+    vertical-align: middle;
+  }
+}
+
+.notes-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease;
+
+  &.open {
+    grid-template-rows: 1fr;
+  }
+
+  > * {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .auto-resize-textarea {
+    min-height: 0;
+  }
+}
+
+.auto-resize-textarea {
+  font-size: inherit;
+  font: inherit;
+  min-height: 1.2em;
+  cursor: text;
+
+  &:focus {
+    outline: 1px solid $gray;
+    border-radius: 2px;
+  }
+}
+
+
+/* ------------ HIDE/SHOW IF NO JS -------- */
+
+/* https://www.amityweb.co.uk/blog/flash-of-jquery-hidden-content-before-js-is-called-to-hide-it
+ */
+.js-enabled .show-no-js { 
+  display: none;
+} 
+
+/* Why would AOS turn this off? Undo it. */
+.no-js [data-aos] { 
+  pointer-events: auto;
+}
 
 /* ------------ FOOTER STYLING ----------- */
 
 div.footer {
   font-size: smaller;
+
+  .sharing { 
+    /* undo target icon */
+    a[target="_blank"]::after { 
+      content: '';
+      margin-left: 0;
+    } 
+  }
+
 }
 
 p.sharing a {
@@ -178,10 +427,10 @@ p.sharing a {
   margin-right: 0.5em;
 }
 
+
 #footer_wrap {
   background: $dark;
   color: $light;
-  position: absolute;
   bottom: 0;
 
   footer.inner {
@@ -194,7 +443,8 @@ p.sharing a {
 
     a {
       color: $light;
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $pink;
       }
     }
@@ -244,7 +494,8 @@ p.sharing a {
       }
     }
 
-    .contact, .links {
+    .contact,
+    .links {
       padding: 1em 0;
 
       ul {
@@ -280,7 +531,6 @@ p.sharing a {
   }
 }
 
-
 /* ---------- EMAIL OBFUSCATION ----------- */
 
 /* Email obfuscation, stolen from CivicTechWR page. */
@@ -306,102 +556,151 @@ p.bigtext {
  * See: embedresponsively.com
  */
 .embedContainer {
-    position: relative;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    max-width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  max-width: 100%;
 
-    /* This should probably be rex, but that
+  /* This should probably be rex, but that
      * does not exist. It is not clear whether
      * rem or em is more appropriate.
      */
-    /* height: 20em; */
-    height: 0;
+  /* height: 20em; */
+  height: 0;
 }
 
 .embedContainer iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* ------ REDO SEARCHABLE MAP ----- */
 
 #map {
-    /* float:left; */
-    width:100%;
-    height:40em;
+  /* float:left; */
+  width: 100%;
+  height: 40em;
 }
 
 #map img {
-    margin:0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #map-searchbar {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    margin-bottom: 1em;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  margin-bottom: 1em;
 
-    .search-input {
-      flex-grow: 1;
-      padding: 3px 6px;
-      font-family: $primary-font;
+  .search-input {
+    flex-grow: 1;
+    padding: 3px 6px;
+    font-family: $primary-font;
+    font-size: inherit;
+
+    &:placeholder {
       font-size: inherit;
-
-      &:placeholder {
-        font-size: inherit;
-        text-overflow: ellipsis;
-      }
+      text-overflow: ellipsis;
     }
+  }
 
-    .leaflet-control-search {
-      .search-button {
-        /* margin: 0;
+  .leaflet-control-search {
+    .search-button {
+      /* margin: 0;
          * margin-right: 6px;
          */
-        /* the cancel and the magnifying glass are both useless.
+      /* the cancel and the magnifying glass are both useless.
          * They also overlap each other. The magnifying glass is 
          * more useless?? So we drop that one.
          */
-        display: none !important; 
-      }
-
-      /* You need this to prevent overflow on mobile */
-      .search-tooltip {
-        max-width: inherit;
-      }
-
+      display: none !important;
     }
 
-
-    .leaflet-control-search.search-exp {
-      flex-grow: 1;
-      display: flex;
-      position: relative;
-      align-items: center;
-      border: none;
-      max-width: 100%;
+    /* You need this to prevent overflow on mobile */
+    .search-tooltip {
+      max-width: inherit;
     }
+  }
+
+  .leaflet-control-search.search-exp {
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: none;
+    max-width: 100%;
+  }
+}
+
+
+.map-loader {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-left: 0.35rem solid $blue;
+}
+
+.map-loader-status {
+  margin: 0;
 }
 
 /* ------ RESULTS PAGE ------ */
 
-.candidate-list-grid { 
+.candidate-list-grid {
   display: grid;
   /* 450px */
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   grid-auto-rows: 1fr;
+  margin-bottom: 2em;
 }
 
 .jurisdiction {
   display: flex;
   flex-wrap: wrap;
-  background: #FEFEFE;
+  background: #fefefe;
   margin: -0.5em;
+}
+
+.favourite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1.25;
+  font-size: 1em;
+  color: $dark;
+
+  &.favourited {
+    color: red;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $blue;
+    border-radius: 2px;
+  }
+}
+
+.notes-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1.25;
+  font-size: 1em;
+  color: $dark;
+
+  &.opened {
+    color: $blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $blue;
+    border-radius: 2px;
+  }
 }
 
 .grid-item {
@@ -412,10 +711,18 @@ p.bigtext {
   .candidate-card {
     border: 1px solid $dark;
     margin: 0.5em;
+    position: relative;
+    overflow: hidden;
+
+    /* undo target icon */
+    a[target="_blank"]::after { 
+      content: '';
+      margin-left: 0;
+    } 
 
     .title {
       background-color: $dark;
-      padding: 1em;
+      padding: 0.65em 0.75em;
       color: $white;
       margin: 0;
       font-weight: bold;
@@ -424,50 +731,192 @@ p.bigtext {
     }
 
     .card-content {
-      padding: 1em;
-      padding-bottom: 0;
-      text-align: center;
+      padding: 0.6em 0.3em 0.6em 0.65em;
+      text-align: left;
 
-      .image {
-          /* display: flex; */
-          justify-content: center;
-          align-items: center;
-          height: 120px;
+      .identity {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65em;
 
-        img {
-          /* FIXME: Should this be pix? */
-          height: 120px;
-          width: 120px;
-          border-radius: 120px;
-          background: $light;
-          padding: 0;
-          border: 1px solid $dark;
-          object-fit: cover;
+        .image {
+          flex: 0 0 64px;
+          width: 64px;
+          min-height: 64px;
+
+          img,
+          .image-placeholder {
+            height: 64px;
+            width: 64px;
+            border-radius: 64px;
+            background: $light;
+            padding: 0;
+            border: 1px solid #8b8b8b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          img {
+            object-fit: cover;
+            margin: 0;
+          }
+
+          .image-placeholder {
+            color: $dark;
+            font-size: 1.45em;
+          }
+        }
+
+        .meta {
+          min-width: 0;
+          flex: 1 1 auto;
         }
       }
+
+      .name {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .interaction-buttons {
+        flex: 0 0 auto;
+      }
+
+      .name h3 {
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0 10px 0.2em;
+        font-size: 1.15em;
+        line-height: 1.25;
+      }
+
+      .name h3 a {
+        color: inherit;
+      }
+
+      .name h3 a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 0.25em;
+        color: $pink;
+      }
+
+      .name h3 .no-website {
+        color: inherit;
+      }
+
+      h3.no-website:hover + .tooltip {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        background: $blue;
+        color: white;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.6s ease;
+        height: auto;
+        font-size: 0.75em;
+      }
+
+      .name .tooltip {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+      }
+
+      .voting-result p {
+        margin: 0.2em 0;
+        font-size: 0.95em;
+      }
+
+      .auto-resize-textarea {
+        margin-top: 0.2em;
+        color: $gray;
+
+        &:focus {
+          color: $dark;
+        }
+      }
+
+      .notes-container.open { 
+
+        .auto-resize-textarea { 
+          border: 0.1em solid black;
+          padding: 0.25em;
+        } 
+      } 
     }
 
     .contact {
       display: flex;
-      padding: 1em;
-      padding-top: 0;
+      padding: 0.15em 0 0.35em;
+      gap: 0.1em;
       flex-wrap: wrap;
 
       .contact-item {
-        flex: 1 0;
+        flex: 0 0 auto;
 
         .contact-item-inner {
-          padding: 6px;
-          text-align: center;
+          padding: 0;
+          text-align: left;
+        }
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 1.8em;
+          min-height: 1.8em;
+          font-size: 0.95em;
+          line-height: 1;
+          text-decoration: none;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+
+          .votemate-icon {
+            width: 1em;
+            height: 1em;
+            display: block;
+            margin: 0;
+            background-color: currentColor;
+            -webkit-mask: url("../icons/svg/votemate.svg") no-repeat center /
+              contain;
+            mask: url("../icons/svg/votemate.svg") no-repeat center / contain;
+          }
         }
       }
     }
-  }
 
+    .withdrawn-stamp {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-18deg);
+      padding: 0.1em 0.7em;
+      border: 3px solid currentColor;
+      color: black;
+      background: rgba(255, 255, 255, 0.6);
+      font-size: 1em;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+  }
 }
 
 .wrv-accordion {
-  a.toggle {
+  a.toggletop {
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -516,15 +965,686 @@ p.bigtext {
   }
 }
 
+.results-list {
+  padding-bottom: 30px;
+
+  .vote-bar {
+    display: grid;
+    grid-template-columns: max-content 11em auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vote-bar h3.name {
+    margin: 0 0 0.2em;
+    font-size: 1.15em;
+    line-height: 1.25;
+  }
+
+  .vote-bar img.vote-winner {
+    height: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .vote-bar-progress {
+    position: relative;
+    height: 2em;
+    color: white;
+  }
+
+  .vote-bar-progress span {
+    display: inline-block;
+  }
+
+  .vote-bar-progress span.vote-amount {
+    background-color: $green;
+    height: 100%;
+    border: 2px solid $green;
+  }
+
+  .vote-bar-after {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .vote-bar-after .vote-count {
+    color: $white;
+    background: $green;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+}
+
 @media screen and (max-width: $sidebar-breakpoint) {
   .grid-item {
     flex: 1 0 50%;
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .grid-item {
     flex: 1 0 100%;
+  }
+
+  .candidate-list-grid {
+    $mobile-avatar-size: 3em;
+    grid-auto-rows: auto;
+
+    .grid-item .candidate-card {
+      .card-content {
+        padding-bottom: 0.3em;
+
+        .identity {
+          display: grid;
+          grid-template-columns: $mobile-avatar-size minmax(0, 1fr);
+          grid-template-areas:
+            "image name"
+            "contact contact";
+          column-gap: 0.55em;
+          row-gap: 0.2em;
+          align-items: center;
+
+          .image {
+            grid-area: image;
+            width: $mobile-avatar-size;
+            height: $mobile-avatar-size;
+            min-height: $mobile-avatar-size;
+            line-height: 0;
+
+            img,
+            .image-placeholder {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+
+            img {
+              display: block;
+            }
+          }
+
+          .meta {
+            display: contents;
+          }
+
+          .name {
+            grid-area: name;
+            min-height: $mobile-avatar-size;
+            display: flex;
+            align-items: center;
+          }
+
+          .contact {
+            grid-area: contact;
+            padding: 0.15em 0 0.1em;
+          }
+        }
+
+        .name h3 {
+          font-size: 1em;
+          line-height: 1.25;
+          min-height: 2.5em;
+          padding-right: 0.08em;
+          overflow-wrap: anywhere;
+        }
+      }
+    }
+  }
+}
+
+/* ------ BASICS ------ */
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 18px;
+  min-height: 100%;
+  position: relative;
+  background: $light;
+  overflow-wrap: break-word;
+
+  a {
+    color: $blue;
+
+    &:hover,
+    &:focus {
+      color: $pink;
+    }
+  }
+
+  a[target="_blank"]::after { 
+    /* https://docs.fontawesome.com/web/add-icons/pseudo-elements/ */
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+    content: '\f35d';
+    margin-left: 0.25em;
+    font-size: smaller;
+  } 
+
+  img {
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    background: none;
+  }
+
+  ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    li {
+      margin: 0.4rem 0;
+    }
+  }
+
+  br.textonly {
+    display: none;
+  }
+
+  #header_wrap {
+    background: $light;
+
+    header.inner {
+      max-width: 1366px;
+      padding: 1% 2%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      .titles {
+        #project_title {
+          font-size: 28px;
+          margin: 0;
+          padding: 0;
+        }
+
+        #project_tagline {
+          font-size: 20px;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .header-logo {
+        img {
+          height: 100px;
+          width: auto;
+          margin: 0;
+          padding: 0;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  #project_title,
+  #project_tagline {
+    color: $dark;
+    text-shadow: none;
+  }
+
+  #main_content_wrap {
+    border-top: none;
+    border-bottom: none;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background: $light;
+
+    .inner {
+      max-width: 1366px;
+      padding: 1vh 2%;
+    }
+  }
+
+  .flex {
+    display: flex;
+
+    &.gutters {
+      margin-left: -1em;
+      margin-right: -1em;
+    }
+
+    &.justify-center {
+      justify-content: center;
+    }
+
+    &.justify-right {
+      justify-content: flex-end;
+    }
+
+    .main {
+      flex-grow: 2;
+      order: 1;
+      margin: 1em;
+      flex-basis: 66%;
+    }
+
+    .aside {
+      flex-grow: 1;
+      order: 2;
+      margin: 1em;
+      flex-basis: 33%;
+    }
+  }
+
+  .content-box {
+    background: transparentize($blue, 0.95);
+    border-left: 6px solid $blue;
+    padding: 0.5em 2em 0.5em 2em;
+    color: $dark;
+    margin-bottom: 2em;
+    overflow-wrap: break-word;
+  }
+
+  .content-box .spacer {
+    padding-left: 1em;
+    border-left: 6px solid $blue;
+    margin-top: 2em;
+  }
+
+  .issue-backgrounder.collapsed {
+    display: none;
+  }
+
+  .issue-backgrounder-btn {
+    margin-bottom: 1em;
+  }
+
+  li.issue-news-new {
+    border-left: 6px solid $blue;
+    background: transparentize($blue, 0.95);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    list-style: none;
+  }
+
+  li.issue-news-old {
+    border-left: 6px solid #ccc;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    list-style: none;
+  }
+
+  .toc-link {
+    margin-top: 3em;
+    font-size: smaller;
+  }
+
+  .aside-box {
+    background-color: $blue;
+    color: $light;
+    padding: 2rem;
+    margin-bottom: 1rem;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $light;
+    }
+
+    a {
+      color: $light !important;
+      font-weight: bold;
+    }
+
+    ul > li > ul > li a {
+      color: $light;
+      font-weight: normal;
+    }
+
+    &.green {
+      background-color: $green;
+
+      a {
+        color: $yellow;
+      }
+    }
+  }
+
+  .worksheets-btn {
+    cursor: pointer;
+    border: none;
+    float: right;
+    padding: 0em 0.75em;
+    margin: -3vh 0 0.5em 1em;
+    font-size: 0.8em;
+    font-family: $primary-font;
+    line-height: 1.4;
+
+    &::after {
+      content: " ▼";
+    }
+
+    &[aria-expanded="true"]::after {
+      content: " ▲";
+    }
+  }
+
+  .standout-box {
+    background: $light;
+    color: $dark;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    .header {
+      padding: 20px 0;
+    }
+
+    .content {
+      padding: 0px;
+      padding-left: 20px;
+      border-left: 4px solid $dark;
+    }
+
+    /* --- THEME COLORS ---- */
+    &.purple {
+      .content {
+        border-left: 4px solid $purple;
+      }
+
+      a {
+        color: $purple;
+      }
+    }
+
+    &.pink {
+      .content {
+        border-left: 4px solid $pink;
+      }
+
+      a {
+        color: $pink;
+      }
+    }
+
+    &.yellow {
+      .content {
+        border-left: 4px solid $yellow;
+      }
+
+      a {
+        color: $yellow;
+      }
+    }
+
+    &.deepYellow {
+      .content {
+        border-left: 4px solid $deepYellow;
+      }
+
+      a {
+        color: $purple;
+      }
+    }
+
+    &.blue {
+      .content {
+        border-left: 4px solid $blue;
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+
+    &.green {
+      .content {
+        border-left: 4px solid $green;
+      }
+
+      a {
+        color: $green;
+      }
+    }
+
+    &.mint {
+      .content {
+        border-left: 4px solid $mint;
+      }
+
+      a {
+        color: $mint;
+      }
+    }
+
+    &.light {
+      .content {
+        border-left: 4px solid transparentize($blue, 0.8);
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+
+    &.small {
+      max-width: 380px;
+    }
+
+    &.medium {
+      max-width: 640px;
+    }
+
+    &.large {
+      max-width: 960px;
+    }
+
+    &.full-width {
+      max-width: 100%;
+    }
+  }
+
+  .bg-blue {
+    background-color: $blue;
+  }
+
+  .bg-green {
+    background-color: $green;
+  }
+
+  .bg-yellow {
+    background-color: $yellow;
+  }
+
+  .bg-pink {
+    background-color: $pink;
+  }
+
+  .bg-mint {
+    background-color: $mint;
+  }
+
+  .bg-purple {
+    background-color: $purple;
+  }
+
+  .blue-text {
+    color: $blue;
+  }
+
+  .green-text {
+    color: $green;
+  }
+
+  .yellow-text {
+    color: $yellow;
+  }
+
+  .pink-text {
+    color: $pink;
+  }
+
+  .mint-text {
+    color: $mint;
+  }
+
+  .purple-text {
+    color: $purple;
+  }
+
+  .big-text {
+    font-size: 3em;
+    line-height: 1.2;
+  }
+
+  .medium-text {
+    font-size: 2em;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .countdown-container {
+    .countdown-days {
+      font-size: 2rem;
+    }
+  }
+
+  .no-margin-top {
+    margin-top: 0;
+  }
+}
+
+/* ---- Responsive Design ---- */
+
+@media screen and (max-width: 1080px) {
+  body {
+    #main_content_wrap {
+      .flex {
+        flex-direction: column;
+
+        &.gutters {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .main {
+          flex-grow: 1;
+          order: 2;
+          margin: 1em 0;
+        }
+
+        .aside {
+          flex-grow: 1;
+          order: 1;
+          margin: 1em 0;
+        }
+      }
+    }
+
+    .big-text {
+      font-size: 2em;
+      line-height: 1.2;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    h1 {
+      font-size: 2em;
+    }
+
+    #main-menu ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+/* ---- Print CSS ---- */
+
+@media print {
+  /* Suppress extra blank page? 
+   * https://stackoverflow.com/questions/7846346/how-can-i-avoid-an-extra-blank-page-at-the-end-while-printing
+   */
+  body {
+    height: auto;
+    padding-bottom: 0 !important;
+  }
+
+  html {
+    height: auto;
+  }
+
+  #header_wrap,
+  #main-menu,
+  #footer_wrap,
+  #worksheet-no-js-warning {
+    display: none;
+  }
+
+  .race-wrapper {
+    break-inside: avoid-page;
+  }
+
+  body {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h2,
+    h2.medium-text {
+      font-size: 1.25em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-bottom: 0.2em;
+      padding-bottom: 0;
+    }
+
+    font-size: 0.7em;
+  }
+
+  table.candidate-worksheet {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0.25em solid black;
+
+    font-size: 1em;
+
+    .favourite-btn {
+      display: block;
+      margin: auto;
+
+      i.fa-regular {
+        display: none;
+      }
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+      border: 0.25em solid black;
+      padding: 0.1em;
+      margin: 0;
+    }
   }
 }

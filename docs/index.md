@@ -3,13 +3,7 @@ title: Welcome!
 layout: default
 ---
 
-<section class="flex justify-center">
-  <article class="standout-box blue large">
-    <h1 id="map-box" >
-    Municipal Election Day is Oct 26, 2026.
-    </h1>
-  </article>
-</section>
+<h1 id="map-box" > Municipal Election Day is Oct 26, 2026.</h1>
 
 We are still deciding whether to run this site for the 2026 municipal
 election. Stay tuned! 
@@ -24,7 +18,9 @@ Check out these resources about the upcoming election:
 
 - Learn how to [register to vote](resources/amend-voters-list).
 - Learn more [about the 2026 election](resources/voter-info).
-- See official candidate lists on <https://wrvotes.com>.
+- See official candidate lists from the official municipal sites
+  linked from <a href="https://wrvotes.com"
+  target="_blank">https://wrvotes.com</a>.
 
 
 Planning to Run as a Candidate?
