@@ -20,23 +20,19 @@ useful if you are a potential voter or potential candidate.
 For Voters
 ------
 
-Learn how to [register to vote], and information about the election. 
+Learn how to [register to vote](resources/amend-voters-list), and
+information [about the 2026 election](resources/voter-info). 
 
 You can see official candidate lists on <https://wrvotes.com> . 
 
 For Candidates
 ----------
 
-Want to run? Here are some resources!
+Want to run? The deadline to register is **August 21, 2026**. 
 
+The Region of Waterloo has published an [overview of the nomination
+process](https://www.regionofwaterloo.ca/government-and-council/elections/#Summaryofthenominationprocess).
 
-
-
-Upcoming Events
----------------
-
-Is there a local election-related event that we have not listed? 
-Please email us about it!
 
 
 {% assign all-events = site.data.sync.events %}
@@ -47,7 +43,7 @@ Please email us about it!
   | where_exp:"ev", "ev.DateTimeStart >= date-now" %}
 
 {% if events-upcoming.size > 0 %}
-  <div class="event-wrapper content-box" id="event-wrapper-upcoming">
+  <div class="" id="event-wrapper-upcoming">
     {% include list-event-block.html
       event-list=events-upcoming
       header="Upcoming Events"
@@ -59,5 +55,7 @@ Please email us about it!
 We have no upcoming events to list yet. Contact us if you have some!
 {% endif %}
 
+Is there a local election-related event that we have not listed? 
+Please email us about it!
 
 
