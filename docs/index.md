@@ -5,8 +5,9 @@ layout: default
 
 <h1 id="map-box" > Municipal Election Day is Oct 26, 2026.</h1>
 
-We are still deciding whether to run this site for the 2026 municipal
-election. Stay tuned! 
+We are evaluating whether we have the capacity to run this site for
+the 2026 municipal election. Stay tuned! 
+(If you would like to help please get in touch.) 
 
 In the meantime we have gathered some information you might find
 useful if you are a potential voter or potential candidate. 
