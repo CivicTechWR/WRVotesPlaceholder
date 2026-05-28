@@ -28,15 +28,13 @@ Planning to Run as a Candidate?
 
 Are you thinking of running for office? Great!
 
-The deadline to register a candidate nomination is **August 21, 2026**. 
-
-The Region of Waterloo has published an [overview of the nomination
+- The deadline to register a candidate nomination is **August 21, 2026**. 
+- The Region of Waterloo has published an [overview of the nomination
 process](https://www.regionofwaterloo.ca/government-and-council/elections/#Summaryofthenominationprocess).
-
-The Association of Municipalities of Ontario has a [comprehensive
+- The Association of Municipalities of Ontario (AMO) has a [comprehensive
 municipal election
-page](https://www.amo.on.ca/about-us/municipal-101/municipal-elections),
-and a resource library containing [Supports for
+page](https://www.amo.on.ca/about-us/municipal-101/municipal-elections)
+- The AMO also maintains a resource library containing [Supports for
 Candidates](https://ldsb-dogwood.softr.app/candidatesupports).
 
 
