@@ -1,13 +1,13 @@
-# Waterloo Region Votes - Municipal 2022
+# Waterloo Region Votes - Placeholder Site 
 
-Voter information platform for Waterloo Region elections.
+Voter information platform for Waterloo Region elections. This page is
+a placeholder between elections. 
 
 ## Published Sites
 
 This repository is published to:
 
-- https://civictechwr.github.io/WRVotes
-- https://development.waterlooregionvotes.org
+- https://civictechwr.github.io/WRVotesPlaceholder
 
 ## About
 
