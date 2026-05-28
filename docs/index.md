@@ -53,7 +53,7 @@ Candidates](https://ldsb-dogwood.softr.app/candidatesupports).
     {% include list-event-block.html
       event-list=events-upcoming
       header="Upcoming Events"
-      teaser-limit=site.teaser_limit_events_generic
+      teaser-limit=0
       race-id=include.race-id
       big-header=true %}
     </div>
