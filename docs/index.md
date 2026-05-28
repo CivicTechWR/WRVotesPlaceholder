@@ -58,6 +58,10 @@ Candidates](https://ldsb-dogwood.softr.app/candidatesupports).
       big-header=true %}
     </div>
 {% else %}
+
+Events
+------
+
 We have no upcoming events to list yet. Contact us if you have some!
 {% endif %}
 
