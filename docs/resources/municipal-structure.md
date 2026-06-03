@@ -26,7 +26,7 @@ the **Region of Waterloo**. The lower tier consists of seven
 and four **townships** (North Dumfries, Wellesley, Wilmot, and
 Woolwich).
 
-The elected body that governs the upper-tier Region of Waterloo is
+The body that governs the upper-tier Region of Waterloo is
 called **Regional Council**. Its membership consists of:
 
 - The **Regional Chair**

@@ -273,7 +273,16 @@ Having said this, there are some dangers to watch out for:
 
 ## How do I follow what is going on during the election?
 
-[Need to update for 2026. CBC? Record? New Hamburg Independent?
-Cambridge Today?]
+You can follow local news organizations. 
+
+Some conversations are also
+on Reddit, in the 
+[/r/waterloo](https://old.reddit.com/r/waterloo), 
+[/r/kitchener](https://old.reddit.com/r/kitchener), 
+[/r/cambridgeont](https://old.reddit.com/r/cambridgeont) subreddits.
+
+
+On social media you can try following the #wrvotes, #wrawesome, and
+#wrpoli hashtags.
 
 </div>

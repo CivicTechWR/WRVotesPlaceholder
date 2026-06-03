@@ -5,7 +5,7 @@ layout: page
 
 # Registering on the Voters' List
 
-You can Elections Ontario's tool, [Register To
+Until **August 12** [VERIFY], you can Elections Ontario's tool, [Register To
 Vote](https://vreg.registertovoteon.ca/en/home), to check whether you
 are on the voters' list. If your information is missing or incorrect,
 you are able to update your information directly there. Alternatively,
@@ -21,7 +21,8 @@ If you have registered to vote in time you will likely receive a voter
 card in the mail, but you may vote even if you do not receive this
 card in time.
 
-[CAN YOU REGISTER THE DAY OF?]
+After August 12 [VERIFY] you need to register to vote at your local
+municipality. 
 
 For further information from the municipalities, refer to their voting information pages:
 - [Cambridge](https://www.cambridge.ca/mayor-city-council-government/elections/voting-in-the-municipal-election/)

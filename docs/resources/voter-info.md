@@ -104,7 +104,6 @@ There are some exceptions to these guidelines that may prohibit you
 from voting. There are also situations where you may vote in more than
 one municipal election.
 
-[NEED LINK TO THE EXCEPTIONS]
 
 ### How do I register to vote?
 
