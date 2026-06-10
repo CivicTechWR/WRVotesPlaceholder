@@ -9,4 +9,7 @@ docs/Gemfile
 docs/Gemfile.lock
 *.~lock.*
 +.jekyll-metadata
+*.config.yml
+*.config.py
+scripts/secrets
 venv
