@@ -270,6 +270,7 @@ debug("changed_files is {}".format(changed_files),3)
 if changed_files:
     repo = Repo(config['gitdir'])
     origin = repo.remote('origin')
+    assert origin.exists()
 
     origin.pull()
 
@@ -284,9 +285,11 @@ if changed_files:
       lambda x: "{}/{}".format(config['targetdir'], x),
       changed_files)
 
+    debug("Full paths: {}".format(", ".join(changed_files))
+
     repo.index.add(changed_with_path)
     repo.index.commit(commit_msg)
-    origin.push()
+    origin.push().raise_if_error()
 else:
     debug("All files are the same. Not committing.", 2)
 
