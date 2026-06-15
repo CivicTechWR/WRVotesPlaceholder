@@ -51,13 +51,6 @@ In 2026, the provincial [Better Regional Governance Act,
 converted the Regional Chair from an elected position to one appointed
 by the provincial Municipal Affairs and Housing. 
 
-For a deeper exploration of this municipal structure, listen to this
-recording of the
-[Communitech Summer School: Civics
-101](https://soundcloud.com/user-216833142/communitech-summer-school-civics-101)
-panel discussion with outgoing chair Ken Seiling and political science
-professor Robert J. Williams.
-
 
 ### What do the different levels of government do?
 
@@ -67,12 +60,14 @@ For example, some roads (usually major and arterial roads) are
 designated as regional roads and are controlled by the Region, while
 other roads are controlled by the municipality. You can find a [list
 of regional
-roads](https://www.regionofwaterloo.ca/en/living-here/resources/Roads-and-Traffic/Regional-Roads-By-Name.pdf)
-on the Region of Waterloo website. 
+roads](https://www.regionofwaterloo.ca/media/5elhytke/docs_admin-5249991-v1-regional_roads_by_name_revised_october_2025.pdf)
+on the Region of Waterloo [Roads and
+Transportation](https://www.regionofwaterloo.ca/programs-and-services/roads-and-transportation/)
+page. 
 
-Also on the Region of Waterloo website you can find a more detailed list of
-[who does
-what](https://www.regionofwaterloo.ca/en/regional-government/regional-responsibilities---who-does-what-in-government.aspx).
+The City of Kitchener has a page that breaks down [regional vs area
+municipality
+responsibilities](https://www.kitchener.ca/council-and-city-administration/city-and-regional-services/)..
 
 #### Regional Responsibilities
 
