@@ -151,6 +151,7 @@ def download_csvs():
                   sources[syncfile]['folder'],
                   "{}.csv".format(syncfile),
                   )
+                debug("Origfile is {}".format(origfile), 3)
 
                 if not filecmp.cmp(candidate, origfile):
                     debug("Found different files: "
