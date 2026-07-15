@@ -1,6 +1,7 @@
 ---
 title: Being a Politician
-layout: page-toc 
+layout: page 
+readable-widths: true
 ---
 
 Being a Politician
